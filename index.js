@@ -9,7 +9,7 @@ const _ = require("lodash");
 
 const app = express();
 
-mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser:true});
+mongoose.connect("mongodb+srv://chetan:shaolin@1@cluster0.t7uvr.gcp.mongodb.net/todo?retryWrites=true&w=majority", {useNewUrlParser:true});
 
 
 const todoSchema ={
