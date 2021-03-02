@@ -1,8 +1,9 @@
+const PORT = process.env.PORT || 3000;
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash");
-const port = process.env.PORT || 3000;
+
 
 //const date = require(__dirname + "/date.js");
 
@@ -57,28 +58,28 @@ app.set("view engine", "ejs");
 
 
 app.get("/", function(req, res){
-
+res.send("Hi Hello World!");
   // const day = date.getDate();
 
-  List.find({}, function(err, found){
+//   List.find({}, function(err, found){
 
-    if(found.length === 0){
+//     if(found.length === 0){
 
-        List.insertMany(allItems, function(err){
-            if(err){
-                console.log(err);
-            }else{
-                console.log("Hey Inserted sucessfully!");
-            }
-        });
-        res.redirect("/");
+//         List.insertMany(allItems, function(err){
+//             if(err){
+//                 console.log(err);
+//             }else{
+//                 console.log("Hey Inserted sucessfully!");
+//             }
+//         });
+//         res.redirect("/");
        
-    }else{
-        res.render("lists", {title:"today", newListItems:found});
-    }
+//     }else{
+//         res.render("lists", {title:"today", newListItems:found});
+//     }
 
    
-  })
+//   })
 
    
 });
@@ -156,6 +157,6 @@ app.get("/:customListName", function(req, res){
       
 });
 
-app.listen(port, function(){
+app.listen(PORT, function(){
     console.log("Connected Server");
 });
