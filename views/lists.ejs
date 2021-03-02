@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lists</title>
+</head>
+<body>
+
+    <h1 style="text-align: center;"><%= title %></h1>
+
+
+  <%  newListItems.forEach(function(item){  %>
+    <form method="POST" action="/delete" style="border: 2px solid skyblue;text-align: center;">
+        <p><%= item.name %></p>
+        <input type="checkbox" name="checkbox" value="<%= item._id %>" onchange="this.form.submit()">
+        <input type="hidden" name="listName" value="<%= title %>">
+    </form>
+  <%  });  %>
+            
+
+    
+    
+    <form method="POST" action="/" style="text-align: center;margin: 5px;">
+    <input type="text" name="itemName" placeholder="Add new items to list" required>
+    <button type="submit" name="list" value="<%= title %>">Add</button>
+    </form>
+</body>
+</html>
