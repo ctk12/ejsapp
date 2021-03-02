@@ -11,26 +11,29 @@ const app = express();
 
 // mongoose.connect("mongodb+srv://chetan:shaolin@1@cluster0.t7uvr.gcp.mongodb.net/todo", {useNewUrlParser:true});
 
+const uri = "mongodb+srv://ctk12:shaolinTEMPLE@cluster0.t7uvr.gcp.mongodb.net/"  + "todo?retryWrites=true&w=majority";
 
-// const todoSchema ={
-//     name:String
-// };
+mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
 
-// const List = mongoose.model("List", todoSchema);
+const todoSchema ={
+    name:String
+};
 
-// const item1 = new List ({
-// name:"Hey nice 1"
-// });
+const List = mongoose.model("List", todoSchema);
 
-// const item2 = new List ({
-//     name:"Hey nice 2"
-//     });
+const item1 = new List ({
+name:"Hey nice 1"
+});
 
-//     const item3 = new List ({
-//         name:"Hey nice 3"
-//         });
+const item2 = new List ({
+    name:"Hey nice 2"
+    });
 
-//         const allItems = [item1, item2, item3];
+    const item3 = new List ({
+        name:"Hey nice 3"
+        });
+
+        const allItems = [item1, item2, item3];
 
 //         // List.insertMany(allItems, function(err){
 //         //     if(err){
@@ -61,25 +64,25 @@ app.get("/", function(req, res){
 //res.send("Hi Hello World!");
   // const day = date.getDate();
 
-//   List.find({}, function(err, found){
+  List.find({}, function(err, found){
 
-//     if(found.length === 0){
+    if(found.length === 0){
 
-//         List.insertMany(allItems, function(err){
-//             if(err){
-//                 console.log(err);
-//             }else{
-//                 console.log("Hey Inserted sucessfully!");
-//             }
-//         });
-//         res.redirect("/");
+        List.insertMany(allItems, function(err){
+            if(err){
+                console.log(err);
+            }else{
+                console.log("Hey Inserted sucessfully!");
+            }
+        });
+        res.redirect("/");
        
-//     }else{
-        res.render("lists", {title:"today", newListItems:items});
-//     }
+    }else{
+        res.render("lists", {title:"today", newListItems:found});
+    }
 
    
-//   })
+  })
 
    
 });
