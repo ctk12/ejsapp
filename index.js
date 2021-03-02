@@ -9,43 +9,43 @@ const _ = require("lodash");
 
 const app = express();
 
-mongoose.connect("mongodb+srv://chetan:shaolin@1@cluster0.t7uvr.gcp.mongodb.net/todo", {useNewUrlParser:true});
+// mongoose.connect("mongodb+srv://chetan:shaolin@1@cluster0.t7uvr.gcp.mongodb.net/todo", {useNewUrlParser:true});
 
 
-const todoSchema ={
-    name:String
-};
+// const todoSchema ={
+//     name:String
+// };
 
-const List = mongoose.model("List", todoSchema);
+// const List = mongoose.model("List", todoSchema);
 
-const item1 = new List ({
-name:"Hey nice 1"
-});
+// const item1 = new List ({
+// name:"Hey nice 1"
+// });
 
-const item2 = new List ({
-    name:"Hey nice 2"
-    });
+// const item2 = new List ({
+//     name:"Hey nice 2"
+//     });
 
-    const item3 = new List ({
-        name:"Hey nice 3"
-        });
+//     const item3 = new List ({
+//         name:"Hey nice 3"
+//         });
 
-        const allItems = [item1, item2, item3];
+//         const allItems = [item1, item2, item3];
 
-        // List.insertMany(allItems, function(err){
-        //     if(err){
-        //         console.log(err);
-        //     }else{
-        //         console.log("Hey Inserted sucessfully!");
-        //     }
-        // });
+//         // List.insertMany(allItems, function(err){
+//         //     if(err){
+//         //         console.log(err);
+//         //     }else{
+//         //         console.log("Hey Inserted sucessfully!");
+//         //     }
+//         // });
 
-        const nextSchema = {
-            name:String,
-            items:[todoSchema]
-        };
+//         const nextSchema = {
+//             name:String,
+//             items:[todoSchema]
+//         };
 
-        const Item = mongoose.model("Item", nextSchema);
+//         const Item = mongoose.model("Item", nextSchema);
 
        
 
@@ -61,25 +61,25 @@ app.get("/", function(req, res){
 //res.send("Hi Hello World!");
   // const day = date.getDate();
 
-  List.find({}, function(err, found){
+//   List.find({}, function(err, found){
 
-    if(found.length === 0){
+//     if(found.length === 0){
 
-        List.insertMany(allItems, function(err){
-            if(err){
-                console.log(err);
-            }else{
-                console.log("Hey Inserted sucessfully!");
-            }
-        });
-        res.redirect("/");
+//         List.insertMany(allItems, function(err){
+//             if(err){
+//                 console.log(err);
+//             }else{
+//                 console.log("Hey Inserted sucessfully!");
+//             }
+//         });
+//         res.redirect("/");
        
-    }else{
-        res.render("lists", {title:"today", newListItems:found});
-    }
+//     }else{
+        res.render("lists", {title:"today", newListItems:items});
+//     }
 
    
-  })
+//   })
 
    
 });
