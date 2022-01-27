@@ -78,7 +78,7 @@ app.get("/", function (req, res) {
 });
 
 app.get("/hey", function (req, res) {
-  res.render("Hey Good");
+  res.send("dfdf");
 });
 
 app.post("/", function (req, res) {
